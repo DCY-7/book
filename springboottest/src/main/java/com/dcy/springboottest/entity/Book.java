@@ -1,4 +1,4 @@
-package com.southwind.springboottest.entity;
+package com.dcy.springboottest.entity;
 
 import lombok.Data;
 
@@ -15,4 +15,6 @@ public class Book {
     private Integer id;
     private String name;
     private String author;
+    private String publish;
+    private Double price;
 }

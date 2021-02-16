@@ -1,22 +1,24 @@
-package com.southwind.springboottest.controller;
+package com.dcy.springboottest.controller;
 
-import com.southwind.springboottest.entity.Book;
-import com.southwind.springboottest.repository.BookRepository;
+import com.dcy.springboottest.entity.Book;
+import com.dcy.springboottest.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/book")
-public class BookHandler {
+public class BookController {
+
     @Autowired
     private BookRepository bookRepository;
 
     @GetMapping("/findAll/{page}/{size}")
-    public Page<Book> findAll(@PathVariable("page") Integer page, @PathVariable("size") Integer size){
-        PageRequest request = PageRequest.of(page,size);
-        return bookRepository.findAll(request);
+    public Page<Book> finAll(@PathVariable("page") Integer page, @PathVariable("size") Integer size){
+        Pageable pageable = PageRequest.of(page-1,size);
+        return bookRepository.findAll(pageable);
     }
 
     @PostMapping("/save")
@@ -24,7 +26,7 @@ public class BookHandler {
         Book result = bookRepository.save(book);
         if(result != null){
             return "success";
-        }else{
+        }else {
             return "error";
         }
     }
@@ -39,13 +41,13 @@ public class BookHandler {
         Book result = bookRepository.save(book);
         if(result != null){
             return "success";
-        }else{
+        }else {
             return "error";
         }
     }
 
     @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable("id") Integer id){
+    public void deleteById(@PathVariable("id") Integer id) {
         bookRepository.deleteById(id);
     }
 }
