@@ -9,28 +9,28 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path:"/",
-        name:"图书管理",
-        component:Index,
-        show:true,
-        redirect:"/BookManage",
-        children:[
+        path: "/",
+        name: "图书管理",
+        component: Index,
+        show: true,
+        redirect: "/BookManage",
+        children: [
             {
-                path:"/BookManage",
-                name:"查询图书",
-                show:true,
-                component:BookManage
+                path: "/BookManage",
+                name: "查询图书",
+                show: true,
+                component: BookManage
             },
             {
-                path:"/AddBook",
-                name:"添加图书",
-                show:true,
-                component:AddBook
+                path: "/AddBook",
+                name: "添加图书",
+                show: true,
+                component: AddBook
             },
             {
-                path:'/update',
-                component:BookUpdate,
-                show:false
+                path: '/update',
+                component: BookUpdate,
+                show: false
             }
         ]
     }

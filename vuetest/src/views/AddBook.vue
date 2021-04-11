@@ -1,5 +1,6 @@
 <template>
-    <el-form style="width: 30%" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+    <el-form style="width: 30%" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px"
+             class="demo-ruleForm">
         <el-form-item label="图书名称" prop="name">
             <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
@@ -23,10 +24,10 @@ export default {
             },
             rules: {
                 name: [
-                    { required: true, message: '请输入图书名称', trigger: 'blur' }
+                    {required: true, message: '请输入图书名称', trigger: 'blur'}
                 ],
                 author: [
-                    { required: true, message: '请输入作者名称', trigger: 'blur' }
+                    {required: true, message: '请输入作者名称', trigger: 'blur'}
                 ],
             }
         };
@@ -41,8 +42,8 @@ export default {
                         cancelButtonText: '取消',
                         type: 'warning'
                     }).then(() => {
-                        axios.post('http://localhost:8181/book/save',this.ruleForm).then((resp)=>{
-                            if(resp.data == 'success'){
+                        axios.post('http://localhost:8181/book/save', this.ruleForm).then((resp) => {
+                            if (resp.data == 'success') {
                                 this.$message({
                                     type: 'success',
                                     message: '添加成功!'

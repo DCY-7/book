@@ -1,5 +1,6 @@
 <template>
-    <el-form style="width: 60%" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+    <el-form style="width: 60%" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px"
+             class="demo-ruleForm">
 
         <el-form-item label="图书编号">
             <el-input v-model="ruleForm.id" readOnly></el-input>
@@ -32,10 +33,10 @@ export default {
             },
             rules: {
                 name: [
-                    { required: true, message: '图书名称不能为空', trigger: 'blur' }
+                    {required: true, message: '图书名称不能为空', trigger: 'blur'}
                 ],
-                author:[
-                    { required: true, message: '作者不能为空', trigger: 'blur' }
+                author: [
+                    {required: true, message: '作者不能为空', trigger: 'blur'}
                 ]
             }
         };
@@ -50,8 +51,8 @@ export default {
                         cancelButtonText: '取消',
                         type: 'warning'
                     }).then(() => {
-                        axios.put('http://localhost:8181/book/update',this.ruleForm).then((resp)=>{
-                            if(resp.data == 'success'){
+                        axios.put('http://localhost:8181/book/update', this.ruleForm).then((resp) => {
+                            if (resp.data == 'success') {
                                 this.$message({
                                     type: 'success',
                                     message: '修改成功!'
@@ -77,7 +78,7 @@ export default {
     },
     created() {
         const _this = this
-        axios.get('http://localhost:8181/book/findById/'+this.$route.query.id).then(function(resp){
+        axios.get('http://localhost:8181/book/findById/' + this.$route.query.id).then(function (resp) {
             _this.ruleForm = resp.data
         })
     }
